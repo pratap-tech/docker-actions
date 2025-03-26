@@ -22,7 +22,9 @@ jobs:
             docker build -t ${{ secrets.DOCKER_USERNAME }}/notes-app:$IMAGE_TAG .
 
       - name: Push Docker Image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/notes-app:$IMAGE_TAG
+        run: |
+            IMAGE_TAG=${{ github.run_id }} 
+            docker push ${{ secrets.DOCKER_USERNAME }}/notes-app:$IMAGE_TAG
 
   test:
     runs-on: ubuntu-latest
