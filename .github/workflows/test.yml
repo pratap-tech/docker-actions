@@ -23,6 +23,7 @@ jobs:
           IMAGE_TAG=${{ github.run_number }}-${BRANCH_NAME}-${TIMESTAMP}
           docker build -t ${{ vars.DOCKER_USERNAME }}/notes-app:$IMAGE_TAG .
           docker push ${{ vars.DOCKER_USERNAME }}/notes-app:$IMAGE_TAG
+          echo "Pushed Docker Image: ${{ vars.DOCKER_USERNAME }}/notes-app:$IMAGE_TAG"
 
   test-job-2:
     runs-on: ubuntu-latest
