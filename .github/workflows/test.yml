@@ -18,7 +18,9 @@ jobs:
         
       - name: Build and Push Docker Image
         run: |
-          IMAGE_TAG=${{ github.run_number }}-$(echo ${{ github.sha }} | cut -c1-7)
+          BRANCH_NAME=$(echo ${{ github.ref_name }} | sed 's/\//-/g')
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          IMAGE_TAG=${{ github.run_number }}-${BRANCH_NAME}-${TIMESTAMP}
           docker build -t ${{ vars.DOCKER_USERNAME }}/notes-app:$IMAGE_TAG .
           docker push ${{ vars.DOCKER_USERNAME }}/notes-app:$IMAGE_TAG
 
