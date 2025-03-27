@@ -43,8 +43,8 @@ jobs:
       
       - name: run the container and deploy
         run: |
-          docker run -d -p 3000:3000 ${{ vars.DOCKER_USERNAME }}/notes-app1:latest
-          docker ps | grep 3000
+         docker run -d -p 3000:3000 ${{ vars.DOCKER_USERNAME }}/notes-app1:latest
+         docker ps | grep 3000
 
       - name: Deploy to Docker
         run: echo "This is deploying the code"
