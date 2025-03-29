@@ -14,16 +14,16 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Docker Image
-        run: docker build -t ${{ vars.DOCKER_USERNAME }}/notes-app1:latest .
+        run: docker build -t ${{ vars.DOCKER_USERNAME }}/notes-tech:latest .
 
       - name: Login to Docker Hub
         run: docker login -u "${{ vars.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
 
       - name: Give the image tag
-        run: docker image tag notes-app:latest "${{ vars.DOCKER_USERNAME }}"/notes-app:latest
+        run: docker image tag notes-tech:latest "${{ vars.DOCKER_USERNAME }}"/notes-tech:latest
       
       - name: Push Docker Image
-        run: docker push "${{ vars.DOCKER_USERNAME }}"/notes-app:latest
+        run: docker push "${{ vars.DOCKER_USERNAME }}"/notes-tech:latest
 
   test-job-2:
     runs-on: ubuntu-latest
